@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin, auth
 from django.conf.urls import include
-#import django_cas_ng
+from django.views.generic.base import RedirectView
 from django_cas_ng.views import login, logout, callback
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(pattern_name='devices_home', permanent=True), name='index'),
     url(r'^devices/', include('devices.urls')),
     url(r'^admin/', include(admin.site.urls)),
     #url('^', include('django.contrib.auth.urls')),
