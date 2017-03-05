@@ -7,10 +7,8 @@ from collectd_rest.models import  GraphGroup
 from .signals import *
 
 class Device(models.Model):
-	config = models.ForeignKey(Config,
+	config = models.OneToOneField(Config,
 				on_delete=models.PROTECT)
-				#unique=True,
-				#editable=False)
 	manufacturer = models.CharField(_("Manufacturer"), max_length=256, blank=True)
 	model_name = models.CharField(_("Model name"), max_length=256, blank=True)
 	activation_date = models.DateField(auto_now_add=True)
