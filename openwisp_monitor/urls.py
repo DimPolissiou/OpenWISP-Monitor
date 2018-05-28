@@ -23,18 +23,12 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(pattern_name='devices_home', permanent=True), name='index'),
     url(r'^devices/', include('devices.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    #url('^', include('django.contrib.auth.urls')),
-    #url(r'^login', auth.views.login, {'template_name': 'registration/login.html'}, name='login'),
-    #url(r'^logout', auth.views.logout, {'next_page': '/login'}, name='logout'),
-    #url(r'^login', login, {'next_page': '/devices'}, name='login'),
-    #url(r'^logout', logout, {'next_page': '/login'}, name='logout'),
 
     url(r'^accounts/login$', login, name='cas_ng_login'),
     url(r'^accounts/logout$', logout, name='cas_ng_logout'),
     url(r'^accounts/callback$', callback, name='cas_ng_proxy_callback'),
 
     url(r'^collectd_rest/', include('collectd_rest.urls')),
-    # ... other urls in your project ...
     url(r'^', include('django_x509.urls', namespace='x509')),
 
     # controller URLs
